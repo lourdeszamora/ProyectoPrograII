@@ -11,10 +11,16 @@ package proyectoprograii;
  */
 public class Player {
     
-    private String userName,password;
-    private int points,goodTeam,badTeam;
-    
-    
+    protected String userName,password;
+    protected int points,goodTeam,badTeam;
+   /**
+   * Constructor de la clase.
+   * 
+   *
+     * @param user
+     * @param pass
+   * @Player(user,pass);
+   */
     public Player(String user,char[] pass){
         
         this.badTeam=0;
