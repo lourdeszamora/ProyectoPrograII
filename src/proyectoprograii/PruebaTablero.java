@@ -9,9 +9,11 @@ package proyectoprograii;
  *
  * @author Lourdes Zamora
  */
-public class Rango1 extends Ficha{
-    public Rango1(String caracteristica) {
-        super(1, 1, (caracteristica.equalsIgnoreCase("bueno"))?"Eowin":"GrimaWomtongue", caracteristica);
-        colocarImagenPersonaje();
+public class PruebaTablero {
+   public static LogicaTablero tab= new LogicaTablero();
+    public static void main(String[] args) {
+        tab.rellenarTablero();
+        tab.PruebaImpresion();
     }
+    
 }

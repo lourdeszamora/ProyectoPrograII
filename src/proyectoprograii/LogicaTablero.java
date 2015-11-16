@@ -23,34 +23,75 @@ public class LogicaTablero {
         this.rellenarRango2();
         this.rellenarRango9y10();
         this.RellenarPiezasFaltantes();
-        
     }
+    
+    public void PruebaImpresion(){
+        for(int fila=0; fila< tablero.length;fila++){
+            for(int col=0;col<tablero[0].length;col++){
+            
+                if(tablero[fila][col]!=null){
+                
+                    System.out.print(tablero[fila][col].getNombre()+"-");
+                    if(col==9)
+                        System.out.println("");
+                }
+                else{
+                
+                    System.out.print("     "+"-");
+                    if(col==9)
+                        System.out.println("");
+                }
+                   
+            }
+        
+        }
+    
+    }
+    
+    public void RellenarFaltantes2(){
+        for(int fila=0; fila< tablero.length;fila++){
+            for(int col=0;col<tablero[0].length;col++){
+            
+                if(tablero[fila][col]!=null){
+                
+                 
+                }
+                else{
+                    
+                }
+                   
+            }
+        
+        }
+    
+    }
+    
     
     public void rellenarRangoBandera(){    
         rellenarRangoBanderaBuenos();  
         rellenarRangoBanderaMalos();
     }
     
-        public void rellenarRangoBanderaMalos(){
-          if(!malos.contains("Bandera")){
-            int col=rand.nextInt(9)+1;
-            if(tablero[0][col]==null){
-                tablero[0][col]=new RangoBandera("malo");
-                tablero[0][col-1]= new RangoFortaleza("malo");
-                tablero[0][col+1]= new RangoFortaleza("malo");
-                tablero[0+1][col]= new RangoFortaleza("malo");
-                malos.add(tablero[0][col].getNombre()); 
-                malos.add(tablero[0][col-1].getNombre());
-                malos.add(tablero[0][col+1].getNombre());
-                malos.add(tablero[0+1][col].getNombre());
-            } 
-            else
-               rellenarRangoBandera();  
+    public void rellenarRangoBanderaMalos(){
+        if(malos.contains("Bandera")==false){
+        int col=rand.nextInt(8)+1;
+        if(tablero[0][col]==null){
+            tablero[0][col]=new RangoBandera("malo");
+            tablero[0][col-1]= new RangoFortaleza("malo");
+            tablero[0][col+1]= new RangoFortaleza("malo");
+            tablero[0+1][col]= new RangoFortaleza("malo");
+            malos.add(tablero[0][col].getNombre()); 
+            malos.add(tablero[0][col-1].getNombre());
+            malos.add(tablero[0][col+1].getNombre());
+            malos.add(tablero[0+1][col].getNombre());
+        } 
+
+        rellenarRangoBandera();  
         }
     }
     
     public void rellenarRangoBanderaBuenos(){
-        if(!buenos.contains("Bandera")){
+        if(buenos.contains("Bandera")==false){
             int col=rand.nextInt(8)+1;
             if(tablero[9][col]==null){
                 tablero[9][col]=new RangoBandera("bueno");
@@ -62,8 +103,8 @@ public class LogicaTablero {
                 buenos.add(tablero[9][col+1].getNombre());
                 buenos.add(tablero[9-1][col].getNombre());
             } 
-            else
-               rellenarRangoBanderaBuenos();   
+           
+            rellenarRangoBanderaBuenos();   
         }
     
     }
@@ -108,8 +149,8 @@ public class LogicaTablero {
                 tablero[fil][col]=new RangoFortaleza("bueno");
                 buenos.add(tablero[fil][col].getNombre());
             }
-            else
-                rellenarRangoFortalezaBuenos();
+           
+            rellenarRangoFortalezaBuenos();
         }
     }
     
@@ -127,8 +168,7 @@ public class LogicaTablero {
                 tablero[fil][col]=new RangoFortaleza("malo");
                 malos.add(tablero[fil][col].getNombre());
             }
-            else
-                rellenarRangoFortalezaMalos();
+            rellenarRangoFortalezaMalos();
         }
      }
      
@@ -142,41 +182,39 @@ public class LogicaTablero {
             boolean random= rand.nextBoolean();
             int fil;
             if(random)
-                fil=2;
-            else
-                fil=3;
-            
-            int col= rand.nextInt(10);
-            if(tablero[fil][col]==null){
-                tablero[fil][col]=new Rango2("bueno");
-                buenos.add(tablero[fil][col].getNombre());
-            }
-            else
-                rellenarRango2Buenos();
-        }
-    }
-    
-    public void rellenarRango2Malos(){
-        if(contarFichas("Warg-riders","malo")<8){
-            boolean random= rand.nextBoolean();
-            int fil;
-            if(random)
                 fil=6;
             else
                 fil=7;
             
             int col= rand.nextInt(10);
             if(tablero[fil][col]==null){
-                tablero[fil][col]=new Rango2("malo");
+                tablero[fil][col]=new Rango2("bueno");
                 buenos.add(tablero[fil][col].getNombre());
             }
+            rellenarRango2Buenos();
+        }
+    }
+    
+    public void rellenarRango2Malos(){
+        if(contarFichas("Warg-rider","malo")<8){
+            boolean random= rand.nextBoolean();
+            int fil;
+            if(random)
+                fil=3;
             else
-                rellenarRango2Buenos();
+                fil=2;
+            
+            int col= rand.nextInt(10);
+            if(tablero[fil][col]==null){
+                tablero[fil][col]=new Rango2("malo");
+                malos.add(tablero[fil][col].getNombre());
+            }
+            rellenarRango2Malos();
         }
     }
     
     public void rellenarRango9Buenos(){
-        if(!buenos.contains("Aragorn")){
+        if(buenos.contains("Aragorn")==false){
             boolean random= rand.nextBoolean();
             int fil=6;
             int col= rand.nextInt(10);
@@ -184,9 +222,7 @@ public class LogicaTablero {
                 tablero[fil][col]=new Rango9("bueno");
                 buenos.add(tablero[fil][col].getNombre());
             }
-               
-            else
-                rellenarRango9Buenos();
+            rellenarRango9Buenos();
         }
     }
     
@@ -199,8 +235,8 @@ public class LogicaTablero {
                 tablero[fil][col]=new Rango9("malo");
                 malos.add(tablero[fil][col].getNombre());
             }
-            else
-                rellenarRango9Malos();
+            
+            rellenarRango9Malos();
         }  
     }
     
@@ -213,14 +249,12 @@ public class LogicaTablero {
                 tablero[fil][col]=new Rango10("bueno");
                 buenos.add(tablero[fil][col].getNombre());
             }
-               
-            else
-                rellenarRango10Buenos();
+            rellenarRango10Buenos();
         }
     }
     
     public void rellenarRango10Malos(){
-        if(!malos.contains("Nazgul")){
+        if(!malos.contains("SeñorNazgul")){
             boolean random= rand.nextBoolean();
             int fil=3;
             int col= rand.nextInt(10);
@@ -228,8 +262,7 @@ public class LogicaTablero {
                 tablero[fil][col]=new Rango10("malo");
                 malos.add(tablero[fil][col].getNombre());
             }
-            else
-                rellenarRango10Malos();
+            rellenarRango10Malos();
         }  
     }
     
@@ -244,11 +277,11 @@ public class LogicaTablero {
     public void RellenarPiezasFaltantes(){
        
         //buenos
-        for(int fila=7; fila< tablero.length;fila++){
+        for(int fila=6; fila< tablero.length;fila++){
             for(int col=0;col<tablero[0].length;col++){
             
-                if(tablero[fila][col]==null)
-                    randomFicha(fila,col,"bueno",true);
+                if(tablero[fila][col]==null){
+                    randomFicha(fila,col,"bueno");}
             }
         
         }
@@ -257,57 +290,58 @@ public class LogicaTablero {
          for(int fila=0; fila< 4;fila++){
             for(int col=0;col<tablero[0].length;col++){
             
-                if(tablero[fila][col]==null)
-                    randomFicha(fila,col,"malo",true);
+                if(tablero[fila][col]==null){
+                    randomFicha(fila,col,"malo");}
             }
         
         }
 
     }
     //true
-    public void randomFicha(int fila,int col,String caracteristica,boolean veri){
-        boolean resp=false;
-        if(!veri){
-            int opc=rand.nextInt(7)+1;
-            switch(opc){
+    public void randomFicha(int fila,int col,String caracteristica){
+        boolean resp;
+        do{
+        int opc=rand.nextInt(7)+1;
+        switch(opc){
 
-                case 1:
-                    resp=rellenarRango1(fila,col,caracteristica);
-                break;
-                case 2:
-                    resp=rellenarRango3(fila,col,caracteristica);
-                break;
-                case 3:
-                    resp=rellenarRango4(fila,col,caracteristica);
-                break;
-                case 4:
-                    resp=rellenarRango5(fila,col,caracteristica);
-                break;
-                case 5:
-                    resp=rellenarRango6(fila,col,caracteristica);
-                break;
-                case 6:
-                    resp=rellenarRango7(fila,col,caracteristica);
-                break;
-                default:
-                    resp=rellenarRango8(fila,col,caracteristica);
-                break;
-            }
-        }
-        else
-            randomFicha(fila,col,caracteristica,resp);
+            case 1:
+                resp=rellenarRango1(fila,col,caracteristica);
+            break;
+            case 2:
+                resp=rellenarRango3(fila,col,caracteristica);
+            break;
+            case 3:
+                resp=rellenarRango4(fila,col,caracteristica);
+            break;
+            case 4:
+                resp=rellenarRango5(fila,col,caracteristica);
+            break;
+            case 5:
+                resp=rellenarRango6(fila,col,caracteristica);
+            break;
+            case 6:
+                resp=rellenarRango7(fila,col,caracteristica);
+            break;
+            default:
+                resp=rellenarRango8(fila,col,caracteristica);
+            break;
+        }}while(resp==false);
+
+            
     }
+    
+    
     
     public boolean rellenarRango1(int fila,int col,String caracteristica){
         if(caracteristica.equalsIgnoreCase("bueno")){
-            if(contarFichas("Eowin",caracteristica)<8){
+            if(buenos.contains("Eowin")==false){
                     tablero[fila][col]=new Rango1(caracteristica);
                     buenos.add(tablero[fila][col].getNombre());
                     return true;
             }
         }
         else{
-            if(contarFichas("Warg-rider",caracteristica)<8){
+            if(malos.contains("GrimaWomtongue")==false){
                     tablero[fila][col]=new Rango1(caracteristica);
                     malos.add(tablero[fila][col].getNombre());
                     return true;
@@ -320,7 +354,7 @@ public class LogicaTablero {
         if(caracteristica.equalsIgnoreCase("bueno")){
             if(contarFichas("SoldadodeGondor",caracteristica)<5){
                     tablero[fila][col]=new Rango3(caracteristica);
-                    buenos.add(tablero[fila][col].getNombre());
+                    buenos.add("SoldadodeGondor");
                     return true;
             }
         }
@@ -344,7 +378,7 @@ public class LogicaTablero {
             }
         }
         else{
-            if(contarFichas("Haradrim",caracteristica)<5){
+            if(contarFichas("Haradrim",caracteristica)<4){
                 tablero[fila][col]=new Rango4("Haradrim",caracteristica);
                 malos.add(tablero[fila][col].getNombre());
                 return true;
@@ -353,27 +387,27 @@ public class LogicaTablero {
         return false;
     }
     public String nombreRango4Buenos(){
-        if(!buenos.contains("Frodo"))
+        if(buenos.contains("Frodo")==false)
             return "Frodo";
-        else if(!buenos.contains("Merry"))
+        if(buenos.contains("Merry")==false)
             return "Merry";
-        else if(!buenos.contains("Sam"))
+        if(buenos.contains("Sam")==false)
             return "Sam";
-        else if(!buenos.contains("Pipin"))
+        if(buenos.contains("Pipin")==false)
             return "Pipin";
         return null;
     }
     public boolean rellenarRango5(int fila,int col,String caracteristica){
         if(caracteristica.equalsIgnoreCase("bueno")){
-            if(contarFichas("Elfo",caracteristica)<5){
+            if(contarFichas("Elfo",caracteristica)<4){
                     tablero[fila][col]=new Rango5(caracteristica);
                     buenos.add(tablero[fila][col].getNombre());
                     return true;
             }
         }
         else{
-            if(contarFichas("Berserker",caracteristica)<5){
-                    tablero[fila][col]=new Rango3(caracteristica);
+            if(contarFichas("Berserker",caracteristica)<4){
+                    tablero[fila][col]=new Rango5(caracteristica);
                     malos.add(tablero[fila][col].getNombre());
                     return true;
             }   
@@ -386,13 +420,13 @@ public class LogicaTablero {
             String nombre=nombreRango6Buenos();
             if(nombre!=null){
                tablero[fila][col]=new Rango6(nombre,caracteristica);
-               buenos.add(tablero[fila][col].getNombre());
+               buenos.add(nombre);
                return true;
             }
         }
         else{
-            if(contarFichas("Uruk-hay",caracteristica)<5){
-                tablero[fila][col]=new Rango4("Uruk-hay",caracteristica);
+            if(contarFichas("Uruk-hay",caracteristica)<4){
+                tablero[fila][col]=new Rango6("Uruk-hay",caracteristica);
                 malos.add(tablero[fila][col].getNombre());
                 return true;
             }   
@@ -401,13 +435,13 @@ public class LogicaTablero {
     }
     
     public String nombreRango6Buenos(){
-        if(!buenos.contains("Boromir"))
+        if(buenos.contains("Boromir")==false)
             return "Boromir";
-        else if(!buenos.contains("Arwen"))
+        if(buenos.contains("Arwen")==false)
             return "Arwen";
-        else if(!buenos.contains("Treebeard"))
+        if(buenos.contains("Treebeard")==false)
             return "Treebeard";
-        else if(!buenos.contains("Haldir"))
+        if(buenos.contains("Haldir")==false)
             return "Haldir";
         return null;
     }
@@ -417,7 +451,7 @@ public class LogicaTablero {
             String nombre=nombreRango7Buenos();
             if(nombre!=null){
                tablero[fila][col]=new Rango7(nombre,caracteristica);
-               buenos.add(tablero[fila][col].getNombre());
+               buenos.add(nombre);
                return true;
             }
         }
@@ -425,7 +459,7 @@ public class LogicaTablero {
            String nombre=nombreRango7Malos();
             if(nombre!=null){
                tablero[fila][col]=new Rango7(nombre,caracteristica);
-               malos.add(tablero[fila][col].getNombre());
+               malos.add(nombre);
                return true;
             }  
         }
@@ -433,21 +467,22 @@ public class LogicaTablero {
     }
     
     public String nombreRango7Buenos(){
-        if(!buenos.contains("Theoden"))
-            return "Theoden";
-        else if(!buenos.contains("Éomer"))
-            return "Éomer";
-        else if(!buenos.contains("Faramir"))
+        if(buenos.contains("Faramir")==false)
             return "Faramir";
+        if(buenos.contains("Theoden")==false)
+            return "Theoden";
+        if(buenos.contains("Éomer")==false)
+            return "Éomer";
+        
         return null;
     }
     
     public String nombreRango7Malos(){
-        if(!buenos.contains("Gothmog"))
+        if(malos.contains("Gothmog")==false)
             return "Gothmog";
-        else if(!buenos.contains("Lurtz"))
+        if(malos.contains("Lurtz")==false)
             return "Lurtz";
-        else if(!buenos.contains("Sharku"))
+        if(malos.contains("Sharku")==false)
             return "Sharku";
         return null;
     }
@@ -462,8 +497,8 @@ public class LogicaTablero {
             }
         }
         else{
-           if(contarFichas("Nazgul",caracteristica)<3){
-                tablero[fila][col]=new Rango4("Nazgul",caracteristica);
+           if(contarFichas("Nazgul",caracteristica)<2){
+                tablero[fila][col]=new Rango8("Nazgul",caracteristica);
                 malos.add(tablero[fila][col].getNombre());
                 return true;
             } 
@@ -472,9 +507,9 @@ public class LogicaTablero {
     }
     
     public String nombreRango8Buenos(){
-        if(!buenos.contains("Legolas"))
+        if(buenos.contains("Legolas")==false)
             return "Legolas";
-        else if(!buenos.contains("Gimli"))
+        else if(buenos.contains("Gimli")==false)
             return "Gimli";
         return null;
     }

@@ -11,22 +11,40 @@ package proyectoprograii;
  */
 public class Player {
     
-    protected String userName,password;
+    protected String userName,password,name;
+
+    public int getGoodTeam() {
+        return goodTeam;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     protected int points,goodTeam,badTeam;
+
+    public String getName() {
+        return name;
+    }
    /**
    * Constructor de la clase.
    * 
    *
      * @param user
      * @param pass
+     * @param name
    * @Player(user,pass);
    */
-    public Player(String user,char[] pass){
+    public Player(String user,char[] pass,String name){
         
         this.badTeam=0;
         this.goodTeam=0;
         this.points=0;
         this.userName=user;
+        this.name=name;
         this.password=String.valueOf(pass);
     
     }

@@ -16,7 +16,7 @@ public class Rango9 extends Ficha {
      * @param caracteristica
      */
     public Rango9(String caracteristica) {
-        super(9, 1, (caracteristica.equalsIgnoreCase("bueno"))?"Aragon":"Saruman", caracteristica);
+        super(9, 1, (caracteristica.equalsIgnoreCase("bueno"))?"Aragorn":"Saruman", caracteristica);
         colocarImagenPersonaje();
     } 
   

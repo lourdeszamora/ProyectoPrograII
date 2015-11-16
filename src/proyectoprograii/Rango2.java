@@ -11,7 +11,7 @@ package proyectoprograii;
  */
 public class Rango2 extends Ficha{
     public Rango2(String caracteristica) {
-        super(2, 8, (caracteristica.equalsIgnoreCase("bueno"))?"CaballerodeRohan":"GrimaWomtongue", caracteristica);
+        super(2, 8, (caracteristica.equalsIgnoreCase("bueno"))?"CaballerodeRohan":"Warg-rider", caracteristica);
         colocarImagenPersonaje();
     }
     
