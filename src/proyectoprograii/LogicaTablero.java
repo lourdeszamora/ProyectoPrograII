@@ -17,7 +17,7 @@ public class LogicaTablero {
     protected Random rand= new Random();
     protected ArrayList<String> buenos = new ArrayList<>(),malos= new ArrayList<>();
     
-    public void rellenarTablero(){
+    public  void rellenarTablero(){
         this.rellenarRangoBandera();
         this.rellenarRangoFortaleza();
         this.rellenarRango2();

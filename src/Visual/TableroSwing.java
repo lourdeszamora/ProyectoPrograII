@@ -18,7 +18,7 @@ import proyectoprograii.LogicaTablero;
  * @author Lourdes Zamora
  */
 public class TableroSwing extends JFrame {
-    LogicaTablero tab= new LogicaTablero();
+   static LogicaTablero tab= new LogicaTablero();
     public TableroSwing(){
         
              //En el Constructor se llama al constructor del padre.
