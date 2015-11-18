@@ -31,9 +31,9 @@ public abstract class Ficha {
     public final void colocarImagenFicha(String caracteristica){
     
         if(caracteristica.equalsIgnoreCase("bueno"))
-            this.imgFicha=new ImageIcon("fichabuena.png");
+            this.imgFicha=new ImageIcon("ProyectoPrograII/images/fichabuena.png");
         else
-            this.imgFicha=new ImageIcon("fichamala.png");
+            this.imgFicha=new ImageIcon("ProyectoPrograII/images/fichamala.png");
         
     }
     /**
