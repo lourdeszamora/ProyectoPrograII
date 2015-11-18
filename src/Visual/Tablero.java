@@ -5,6 +5,9 @@
  */
 package Visual;
 
+import javax.swing.JLabel;
+import proyectoprograii.LogicaTablero;
+
 /**
  *
  * @author Lourdes Zamora
@@ -14,6 +17,8 @@ public class Tablero extends javax.swing.JFrame {
     /**
      * Creates new form Tablero
      */
+    JLabel[][] tableroVisual= new JLabel[10][10];
+    public static LogicaTablero tab= new LogicaTablero();
     public Tablero() {
         initComponents();
     }
@@ -27,44 +32,25 @@ public class Tablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ptablero = new javax.swing.JPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        ptablero.setMaximumSize(new java.awt.Dimension(640, 640));
-        ptablero.setMinimumSize(new java.awt.Dimension(640, 640));
-
-        javax.swing.GroupLayout ptableroLayout = new javax.swing.GroupLayout(ptablero);
-        ptablero.setLayout(ptableroLayout);
-        ptableroLayout.setHorizontalGroup(
-            ptableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        ptableroLayout.setVerticalGroup(
-            ptableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ptablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 660, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ptablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 662, Short.MAX_VALUE)
         );
 
         pack();
@@ -72,9 +58,29 @@ public class Tablero extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
+    
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        
+//        
+//            tab.rellenarTablero();
+//        for(int fila=0;fila<tableroVisual.length;fila++){
+//            for(int col=0;col<tableroVisual[0].length;col++){
+//                if(tab.tablero[fila][col]!=null){
+//                    tableroVisual[fila][col]= new JLabel(tab.tablero[fila][col].getImgFicha());
+//                }
+//                else
+//                    tableroVisual[fila][col]= new JLabel("Vacio");
+//                this.getContentPane().add(tableroVisual[fila][col]);
+//                
+//            }
+//        
+//        }
+       
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -102,6 +108,9 @@ public class Tablero extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+         
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -112,6 +121,5 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ptablero;
     // End of variables declaration//GEN-END:variables
 }

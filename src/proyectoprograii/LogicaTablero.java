@@ -13,7 +13,7 @@ import java.util.Random;
  * @author Lourdes Zamora
  */
 public class LogicaTablero {
-    protected Ficha tablero[][]= new Ficha[10][10];
+    public static Ficha tablero[][]= new Ficha[10][10];
     protected Random rand= new Random();
     protected ArrayList<String> buenos = new ArrayList<>(),malos= new ArrayList<>();
     
