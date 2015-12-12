@@ -48,23 +48,6 @@ public class LogicaTablero {
     
     }
     
-    public void RellenarFaltantes2(){
-        for(int fila=0; fila< tablero.length;fila++){
-            for(int col=0;col<tablero[0].length;col++){
-            
-                if(tablero[fila][col]!=null){
-                
-                 
-                }
-                else{
-                    
-                }
-                   
-            }
-        
-        }
-    
-    }
     
     
     public void rellenarRangoBandera(){    
@@ -86,7 +69,7 @@ public class LogicaTablero {
             malos.add(tablero[0+1][col].getNombre());
         } 
 
-        rellenarRangoBandera();  
+        rellenarRangoBanderaMalos();  
         }
     }
     
@@ -278,7 +261,7 @@ public class LogicaTablero {
        
         //buenos
         for(int fila=6; fila< tablero.length;fila++){
-            for(int col=0;col<tablero[0].length;col++){
+            for(int col=0;col<tablero[fila].length;col++){
             
                 if(tablero[fila][col]==null){
                     randomFicha(fila,col,"bueno");}
@@ -288,7 +271,7 @@ public class LogicaTablero {
         
         //malos
          for(int fila=0; fila< 4;fila++){
-            for(int col=0;col<tablero[0].length;col++){
+            for(int col=0;col<tablero[fila].length;col++){
             
                 if(tablero[fila][col]==null){
                     randomFicha(fila,col,"malo");}

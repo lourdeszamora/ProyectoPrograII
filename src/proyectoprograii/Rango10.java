@@ -9,7 +9,7 @@ package proyectoprograii;
  *
  * @author Lourdes Zamora
  */
-public class Rango10 extends Ficha {
+public class Rango10 extends Ficha implements Cloneable {
 
     /**
      *
@@ -18,6 +18,12 @@ public class Rango10 extends Ficha {
     public Rango10(String caracteristica) {
         super(10, 1, (caracteristica.equalsIgnoreCase("bueno"))?"Gandalf":"SeñorNazgul", caracteristica);
         colocarImagenPersonaje();
+    }
+    
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+      Rango10 clon = new Rango10(this.caracteristica);
+      return clon;
     }
  
 }

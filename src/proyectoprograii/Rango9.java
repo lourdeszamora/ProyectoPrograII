@@ -9,7 +9,7 @@ package proyectoprograii;
  *
  * @author Lourdes Zamora
  */
-public class Rango9 extends Ficha {
+public class Rango9 extends Ficha implements Cloneable {
     
     /**
      *
@@ -20,4 +20,9 @@ public class Rango9 extends Ficha {
         colocarImagenPersonaje();
     } 
   
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Rango9 clon = new Rango9(this.caracteristica);
+        return clon;
+    }
 }

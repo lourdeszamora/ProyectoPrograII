@@ -31,7 +31,7 @@ public abstract class Ficha {
     public final void colocarImagenFicha(String caracteristica){
     
         if(caracteristica.equalsIgnoreCase("bueno"))
-            this.imgFicha=new ImageIcon("ProyectoPrograII/images/fichabuena.png");
+            this.imgFicha=new ImageIcon(getClass().getResource("/images/fichabuena.png"));
         else
             this.imgFicha=new ImageIcon("ProyectoPrograII/images/fichamala.png");
         
@@ -41,7 +41,7 @@ public abstract class Ficha {
     * @author Lourdes Zamora
     */
     public void colocarImagenPersonaje(){
-        this.imgPersonaje=new ImageIcon("ficha"+this.getNombre()+".png");
+//        this.imgPersonaje=new ImageIcon(getClass().getResource("/images/ficha_"+this.getNombre()+".png"));
     }
 
     public ImageIcon getImgFicha() {

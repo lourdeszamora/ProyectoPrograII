@@ -5,7 +5,13 @@
  */
 package Visual;
 
-import javax.swing.JLabel;
+
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
+import proyectoprograii.LabelTablero;
 import proyectoprograii.LogicaTablero;
 
 /**
@@ -17,10 +23,32 @@ public class Tablero extends javax.swing.JFrame {
     /**
      * Creates new form Tablero
      */
-    JLabel[][] tableroVisual= new JLabel[10][10];
+    LabelTablero[][] tableroVisual= new LabelTablero[10][10];
     public static LogicaTablero tab= new LogicaTablero();
     public Tablero() {
         initComponents();
+        
+        GridLayout grid= new GridLayout(0,10);
+        PanelGrid.setLayout(grid);
+        tab.rellenarTablero();
+        tab.PruebaImpresion();
+        for(int fila=0;fila<tableroVisual.length;fila++){
+            for(int col=0;col<tableroVisual[fila].length;col++){
+                tableroVisual[fila][col]=new LabelTablero(fila,col);
+                if(tab.tablero[fila][col]!=null){
+                    if(tab.tablero[fila][col].getCaracteristica().equalsIgnoreCase("bueno"))
+                        tableroVisual[fila][col].setIcon(new ImageIcon(getClass().getResource("/images/fichabuena.png")));
+                    else
+                        tableroVisual[fila][col].setIcon(new ImageIcon(getClass().getResource("/images/fichamala.png")));
+                }    
+                else
+                    tableroVisual[fila][col].setIcon(null);
+                tableroVisual[fila][col].addMouseListener(createMouseListener());
+                
+               
+                PanelGrid.add(tableroVisual[fila][col]);   
+            } 
+        }
     }
 
     /**
@@ -32,6 +60,14 @@ public class Tablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        PanelGrid = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -42,15 +78,59 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setLayout(null);
+
+        PanelGrid.setMinimumSize(new java.awt.Dimension(670, 670));
+        PanelGrid.setOpaque(false);
+        PanelGrid.setPreferredSize(new java.awt.Dimension(670, 670));
+
+        javax.swing.GroupLayout PanelGridLayout = new javax.swing.GroupLayout(PanelGrid);
+        PanelGrid.setLayout(PanelGridLayout);
+        PanelGridLayout.setHorizontalGroup(
+            PanelGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+        PanelGridLayout.setVerticalGroup(
+            PanelGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(PanelGrid);
+        PanelGrid.setBounds(0, 0, 670, 670);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tablero.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 670, 670);
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(680, 20, 280, 280);
+
+        jList2.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList2);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(680, 380, 280, 240);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 662, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -58,28 +138,11 @@ public class Tablero extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-    
-        
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+
         
-//        
-//            tab.rellenarTablero();
-//        for(int fila=0;fila<tableroVisual.length;fila++){
-//            for(int col=0;col<tableroVisual[0].length;col++){
-//                if(tab.tablero[fila][col]!=null){
-//                    tableroVisual[fila][col]= new JLabel(tab.tablero[fila][col].getImgFicha());
-//                }
-//                else
-//                    tableroVisual[fila][col]= new JLabel("Vacio");
-//                this.getContentPane().add(tableroVisual[fila][col]);
-//                
-//            }
-//        
-//        }
-       
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -121,5 +184,25 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelGrid;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList jList1;
+    private javax.swing.JList jList2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    private MouseListener createMouseListener() {
+          return new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                LabelTablero label = (LabelTablero)e.getSource();
+                System.out.println("Clicked fila: "+label.fila+"col: "+label.col);
+                
+            }
+        };
+    }
+
+  
 }
